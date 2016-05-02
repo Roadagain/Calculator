@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <string.h>
 
+#include "calc.h"
 #include "input.h"
 
 int main(void)
@@ -12,6 +13,7 @@ int main(void)
         if (strcmp(input, "exit") == 0 || strcmp(input, "quit") == 0){
             break;
         }
+        printf("%d\n", calc(input));
     }
 
     return (0);

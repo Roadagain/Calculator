@@ -13,7 +13,7 @@ int main(void)
         if (strcmp(input, "exit") == 0 || strcmp(input, "quit") == 0){
             break;
         }
-        printf("%d\n", calc(input));
+        printf("%d\n", calc(input, 0));
     }
 
     return (0);

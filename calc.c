@@ -27,9 +27,7 @@ int calc(const char* p, int mul_div_flag)
                         i++;
                     }
                 }
-                else {
-                    i++;
-                }
+                i++;
                 break;
             case '/':
                 ans /= calc(p + i + 1, 1);
@@ -38,9 +36,7 @@ int calc(const char* p, int mul_div_flag)
                         i++;
                     }
                 }
-                else {
-                    i++;
-                }
+                i++;
                 break;
             case '(':
                 return (calc(p + i + 1, 0));

@@ -4,7 +4,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-int calc(const char* p)
+int calc(const char* p, int mul_div_flag)
 {
     int i;
     int ans;
@@ -17,16 +17,30 @@ int calc(const char* p)
         }
         switch (p[i]){
             case '+':
-                return (ans + calc(p + i + 1));
+                return (ans + calc(p + i + 1, 0));
             case '-':
-                return (ans - calc(p + i + 1));
+                return (ans - calc(p + i + 1, 0));
             case '*':
-                ans *= atoi(p + i + 1);
-                i++;
+                ans *= calc(p + i + 1, 1);
+                if (p[i + 1] == '('){
+                    while (p[i] != ')'){
+                        i++;
+                    }
+                }
+                else {
+                    i++;
+                }
                 break;
             case '/':
-                ans /= atoi(p + i + 1);
-                i++;
+                ans /= calc(p + i + 1, 1);
+                if (p[i + 1] == '('){
+                    while (p[i] != ')'){
+                        i++;
+                    }
+                }
+                else {
+                    i++;
+                }
                 break;
             case '\0':
                 return (ans);

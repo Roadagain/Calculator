@@ -10,6 +10,9 @@ int calc(const char* p, int mul_div_flag)
     int ans;
 
     ans = atoi(p);
+    if (p[0] != '(' && mul_div_flag == 1){
+        return (ans);
+    }
     i = 0;
     while (p[i] != '\0'){
         while (isdigit(p[i])){

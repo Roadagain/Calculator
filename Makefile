@@ -1,7 +1,7 @@
 # Roadagain's calculator
 
-CXX = g++
-CXXFLAGS = -c -O3 -Wall -Wextra
+CC = gcc
+CFLAGS = -c -O3 -Wall -Wextra
 SRC = $(wildcard *.c)
 OBJ = $(patsubst %.c, %.o, $(SRC))
 EXE = calc
@@ -12,7 +12,7 @@ EXE = calc
 all: $(EXE)
 
 $(EXE): $(OBJ)
-	$(CXX) -o $(EXE) $(OBJ)
+	$(CC) -o $(EXE) $(OBJ)
 
 .PHONY: clean
 clean:
@@ -22,4 +22,4 @@ clean:
 rebuild: clean all
 
 .c.o:
-	$(CXX) $(CXXFLAGS) $^
+	$(CC) $(CFLAGS) $^

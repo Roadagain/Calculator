@@ -42,6 +42,9 @@ int calc(const char* p, int mul_div_flag)
                     i++;
                 }
                 break;
+            case '(':
+                return (calc(p + i + 1, 0));
+            case ')':
             case '\0':
                 return (ans);
             default:

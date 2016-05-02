@@ -35,4 +35,6 @@ int calc(const char* p)
                 return (0);
         }
     }
+
+    return (ans);
 }

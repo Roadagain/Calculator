@@ -4,12 +4,12 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-int calc(const char* p, int mul_div_flag)
+double calc(const char* p, int mul_div_flag)
 {
     int i;
-    int ans;
+    double ans;
 
-    ans = atoi(p);
+    ans = atof(p);
     if (p[0] != '(' && mul_div_flag == 1){
         return (ans);
     }

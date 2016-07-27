@@ -6,8 +6,32 @@
 
 void read_line(char *p)
 {
-    fgets(p, MAX_SIZE, stdin);
+    if (fgets(p, MAX_SIZE, stdin) == NULL){
+        p[0] = '\0';
+        return;
+    }
     remove_space(p);
+}
+
+int is_exit(const char* p)
+{
+    const char* exit_words[] = {
+        "exit",
+        "quit",
+        "bye",
+    };
+    int len = (int)(sizeof(exit_words) / sizeof(char*));
+    int i;
+
+    if (strlen(p) == 0){
+        return (1);
+    }
+    for (i = 0; i < len; i++){
+        if (strcmp(p, exit_words[i]) == 0){
+            return (1);
+        }
+    }
+    return (0);
 }
 
 void remove_space(char* p)

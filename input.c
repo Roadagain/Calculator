@@ -18,6 +18,7 @@ int is_exit(const char* p)
     const char* exit_words[] = {
         "exit",
         "quit",
+        "bye",
     };
     int len = (int)(sizeof(exit_words) / sizeof(char*));
     int i;

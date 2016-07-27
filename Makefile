@@ -23,6 +23,6 @@ clean:
 rebuild: clean all
 
 .c.o:
-	$(CC) $(CFLAGS) $^
+	$(CC) $(CFLAGS) $<
 
 -include $(DEP)

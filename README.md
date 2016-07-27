@@ -1,4 +1,4 @@
-# Calculator v1.2
+# Calculator v1.3
 A simple calculator
 
 ## Implemented calculation

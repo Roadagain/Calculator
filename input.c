@@ -6,7 +6,10 @@
 
 void read_line(char *p)
 {
-    fgets(p, MAX_SIZE, stdin);
+    if (fgets(p, MAX_SIZE, stdin) == NULL){
+        p[0] = '\0';
+        return;
+    }
     remove_space(p);
 }
 

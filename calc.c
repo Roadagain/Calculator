@@ -4,15 +4,21 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-int calc(const char* p, int mul_div_flag)
+double calc(const char* p, int mul_div_flag)
 {
     int i;
-    int ans;
+    double ans;
 
-    ans = atoi(p);
     if (p[0] != '(' && mul_div_flag == 1){
-        return (ans);
+        return (atof(p));
     }
+    else if (p[0] == '('){
+        ans = 0;
+    }
+    else {
+        ans = atof(p);
+    }
+
     i = 0;
     while (p[i] != '\0'){
         while (isdigit(p[i])){

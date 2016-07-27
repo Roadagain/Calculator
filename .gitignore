@@ -31,3 +31,6 @@ calc
 
 # Debug files
 *.dSYM/
+
+# Dependence files
+*.d

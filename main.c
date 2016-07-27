@@ -13,6 +13,7 @@ int main(void)
 
         read_line(input);
         if (is_exit(input) == 1){
+            puts("bye!!");
             break;
         }
         ans = calc(input, 0);

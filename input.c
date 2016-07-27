@@ -13,6 +13,26 @@ void read_line(char *p)
     remove_space(p);
 }
 
+int is_exit(const char* p)
+{
+    const char* exit_words[] = {
+        "exit",
+        "quit",
+    };
+    int len = (int)(sizeof(exit_words) / sizeof(char*));
+    int i;
+
+    if (strlen(p) == 0){
+        return (1);
+    }
+    for (i = 0; i < len; i++){
+        if (strcmp(p, exit_words[i]) == 0){
+            return (1);
+        }
+    }
+    return (0);
+}
+
 void remove_space(char* p)
 {
     int i, j;

@@ -7,7 +7,7 @@ OBJ = $(patsubst %.c, %.o, $(SRC))
 DEP = $(patsubst %.c, %.d, $(SRC))
 EXE = calc
 
-.SUFFIXES: .cpp .o .h .d
+.SUFFIXES: .c .o .h .d
 
 .PHONY: all
 all: $(EXE)

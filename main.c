@@ -12,7 +12,7 @@ int main(void)
         double ans;
 
         read_line(input);
-        if (strcmp(input, "exit") == 0 || strcmp(input, "quit") == 0){
+        if (strlen(input) == 0 || strcmp(input, "exit") == 0 || strcmp(input, "quit") == 0){
             break;
         }
         ans = calc(input, 0);

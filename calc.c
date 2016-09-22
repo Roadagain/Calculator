@@ -31,21 +31,11 @@ double calc(const char* p, int mul_div_flag)
                 return (ans - calc(p + i + 1, 0));
             case '*':
                 ans *= calc(p + i + 1, 1);
-                if (p[i + 1] == '('){
-                    while (p[i] != ')'){
-                        i++;
-                    }
-                }
-                i++;
+                i += correspondence(p + i + 1) + 1;
                 break;
             case '/':
                 ans /= calc(p + i + 1, 1);
-                if (p[i + 1] == '('){
-                    while (p[i] != ')'){
-                        i++;
-                    }
-                }
-                i++;
+                i += correspondence(p + i + 1) + 1;
                 break;
             case '(':
                 return (calc(p + i + 1, 0));
@@ -59,4 +49,29 @@ double calc(const char* p, int mul_div_flag)
     }
 
     return (ans);
+}
+
+int correspondence(const char *p)
+{
+    int brackets_count;
+    int i;
+
+    if (p[0] != '('){
+        return (0);
+    }
+
+    brackets_count = 1;
+    for (i = 1; p[i] != '\0'; i++){
+        if (p[i] == '('){
+            brackets_count++;
+        }
+        else if (p[i] == ')'){
+            brackets_count--;
+            if (brackets_count == 0){
+                return (i);
+            }
+        }
+    }
+
+    return (i);
 }

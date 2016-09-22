@@ -21,7 +21,7 @@ double calc(const char* p, int mul_div_flag)
 
     i = 0;
     while (p[i] != '\0'){
-        while (isdigit(p[i])){
+        while (isoperator(p + i) == 0 && p[i] != '\0'){
             i++;
         }
         switch (p[i]){
@@ -51,6 +51,19 @@ double calc(const char* p, int mul_div_flag)
     }
 
     return (ans);
+}
+
+int isoperator(const char* p)
+{
+    char c = p[0];
+
+    if ((c == '+' || c == '-') && isdigit(p[1]) == 0){
+        return (1);
+    }
+    if (c == '*' || c == '/' || c == '(' || c == ')'){
+        return (1);
+    }
+    return (0);
 }
 
 int correspondence(const char *p)

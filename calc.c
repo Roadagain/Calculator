@@ -38,7 +38,9 @@ double calc(const char* p, int mul_div_flag)
                 i += correspondence(p + i + 1) + 1;
                 break;
             case '(':
-                return (calc(p + i + 1, 0));
+                ans = calc(p + i + 1, 0);
+                i += correspondence(p + i) + 1;
+                break;
             case ')':
             case '\0':
                 return (ans);

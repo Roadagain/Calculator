@@ -16,6 +16,7 @@ void read_line(char *p)
 int is_exit(const char* p)
 {
     const char* exit_words[] = {
+        "",
         "exit",
         "quit",
         "bye",

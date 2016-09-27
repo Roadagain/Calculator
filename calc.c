@@ -57,10 +57,7 @@ int isoperator(const char* p)
 {
     char c = p[0];
 
-    if ((c == '+' || c == '-') && isdigit(p[1]) == 0){
-        return (1);
-    }
-    if (c == '*' || c == '/' || c == '(' || c == ')'){
+    if (c == '+' || c == '-' || c == '*' || c == '/' || c == '(' || c == ')'){
         return (1);
     }
     return (0);

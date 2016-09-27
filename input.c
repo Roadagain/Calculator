@@ -1,7 +1,9 @@
 #include "input.h"
+#include "calc.h"
 
 #include <ctype.h>
 #include <stdio.h>
+#include <stdlib.h>
 #include <string.h>
 
 void read_line(char *p)
@@ -11,6 +13,7 @@ void read_line(char *p)
         return;
     }
     remove_space(p);
+    replace_minus(p);
 }
 
 int is_exit(const char* p)
@@ -53,6 +56,33 @@ void remove_space(char* p)
                 i++;
                 j++;
             }
+        }
+    }
+}
+
+void replace_minus(char* p)
+{
+    int i, j;
+    char tmp[65536];
+
+    i = j = 0;
+    while (p[i] != '\0'){
+        while (p[i] != '-'){
+            i++;
+        }
+        if (p[i] == '-' && (p == 0 || isdigit(p[i - 1]) == 0) && p[i - 1] != ')'){
+            strncpy(tmp, p, i);
+            strcpy(tmp + i, "(0-");
+            sprintf(tmp + i + 3, "%f)", -atof(p + i));
+            i++;
+            while (isoperator(p + i) == 0 && p[i] != '\0'){
+                i++;
+            }
+            strcpy(tmp + strlen(tmp), p + i);
+            strcpy(p, tmp);
+        }
+        else {
+            i++;
         }
     }
 }

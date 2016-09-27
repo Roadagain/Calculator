@@ -1,4 +1,4 @@
-# Calculator v2.0.1
+# Calculator v2.0
 
 ## Implemented calculation
 + Four arthmetic operations

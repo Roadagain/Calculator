@@ -78,10 +78,8 @@ void replace_minus(char* p)
             while (isoperator(p + i) == 0 && p[i] != '\0'){
                 i++;
             }
-            puts(p + i);
             strcpy(tmp + strlen(tmp), p + i);
             strcpy(p, tmp);
-            puts(p);
         }
         else {
             i++;

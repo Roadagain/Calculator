@@ -6,5 +6,6 @@
 void read_line(char* p);
 int is_exit(const char* p);
 void remove_space(char* p);
+void replace_minus(char* p);
 
 #endif

@@ -21,7 +21,7 @@ double calc(const char* p, int mul_div_flag)
 
     i = 0;
     while (p[i] != '\0'){
-        while (isdigit(p[i])){
+        while (isoperator(p + i) == 0 && p[i] != '\0'){
             i++;
         }
         switch (p[i]){
@@ -31,24 +31,16 @@ double calc(const char* p, int mul_div_flag)
                 return (ans - calc(p + i + 1, 0));
             case '*':
                 ans *= calc(p + i + 1, 1);
-                if (p[i + 1] == '('){
-                    while (p[i] != ')'){
-                        i++;
-                    }
-                }
-                i++;
+                i += correspondence(p + i + 1) + 1;
                 break;
             case '/':
                 ans /= calc(p + i + 1, 1);
-                if (p[i + 1] == '('){
-                    while (p[i] != ')'){
-                        i++;
-                    }
-                }
-                i++;
+                i += correspondence(p + i + 1) + 1;
                 break;
             case '(':
-                return (calc(p + i + 1, 0));
+                ans = calc(p + i + 1, 0);
+                i += correspondence(p + i) + 1;
+                break;
             case ')':
             case '\0':
                 return (ans);
@@ -59,4 +51,42 @@ double calc(const char* p, int mul_div_flag)
     }
 
     return (ans);
+}
+
+int isoperator(const char* p)
+{
+    char c = p[0];
+
+    if ((c == '+' || c == '-') && isdigit(p[1]) == 0){
+        return (1);
+    }
+    if (c == '*' || c == '/' || c == '(' || c == ')'){
+        return (1);
+    }
+    return (0);
+}
+
+int correspondence(const char *p)
+{
+    int brackets_count;
+    int i;
+
+    if (p[0] != '('){
+        return (0);
+    }
+
+    brackets_count = 1;
+    for (i = 1; p[i] != '\0'; i++){
+        if (p[i] == '('){
+            brackets_count++;
+        }
+        else if (p[i] == ')'){
+            brackets_count--;
+            if (brackets_count == 0){
+                return (i);
+            }
+        }
+    }
+
+    return (i);
 }

@@ -28,7 +28,7 @@ rebuild: clean all
 
 .PHONY: test
 test: $(TESTEXE)
-	sh test/test.sh $(TESTEXE)
+	$<
 
 .c.o:
 	$(CC) $(CFLAGS) $<

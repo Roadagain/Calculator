@@ -1,5 +1,5 @@
 #include <string.h>
-#include "../input.h"
+#include "../../input.h"
 
 int main(void)
 {

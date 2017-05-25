@@ -38,3 +38,4 @@ calc
 # Executable Tests
 test/input/*
 !test/input/*.c
+!test/input/test.sh

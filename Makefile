@@ -7,7 +7,10 @@ OBJ = $(patsubst %.c, %.o, $(SRC))
 DEP = $(patsubst %.c, %.d, $(SRC))
 EXE = calc
 TESTCFLAGS = -O3 -Wall -Wextra -MMD -MP
-TESTSRC = $(wildcard test/*.c)
+TESTINPUTSRC = $(wildcard test/input/*.c)
+TESTSRC = $(wildcard test/**/*.c)
+TESTLIB = $(filter-out ./main.o, $(OBJ))
+TESTINPUTEXE = $(patsubst %.c, %, $(TESTINPUTSRC))
 TESTEXE = $(patsubst %.c, %, $(TESTSRC))
 TESTDEP = $(patsubst %.c, %.d, $(TESTSRC))
 
@@ -27,13 +30,17 @@ clean:
 rebuild: clean all
 
 .PHONY: test
-test: $(TESTEXE)
-	$<
+test: $(TESTEXE) test-input
+
+test-input: $(TESTINPUTEXE)
+	test/input/test.sh $^
 
 .c.o:
 	$(CC) $(CFLAGS) $<
 
-%: test/%.c
-	$(CC) $(TESTCFLAGS) $< -o $@
+$(TESTEXE): $(TESTLIB)
+
+.c:
+	$(CC) $(TESTCFLAGS) $< $(TESTLIB) -o $@
 
 -include $(DEP)

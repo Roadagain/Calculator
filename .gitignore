@@ -34,3 +34,7 @@ calc
 
 # Dependence files
 *.d
+
+# Executable Tests
+test/*
+!test/*.c

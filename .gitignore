@@ -37,4 +37,4 @@ calc
 
 # Executable Tests
 test/*
-!test/*.c
+!test/**/*.c

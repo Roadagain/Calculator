@@ -36,5 +36,5 @@ calc
 *.d
 
 # Executable Tests
-test/*
-!test/**/*.c
+test/input/*
+!test/input/*.c

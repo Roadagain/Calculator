@@ -4,7 +4,7 @@
 int main(void)
 {
     char before[] = "12 + 3";
-    char after[] = "12 + 3";
+    char after[] = "12+3";
 
     remove_space(before);
     if (strcmp(before, after) == 0){

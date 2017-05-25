@@ -3,8 +3,8 @@
 
 int main(void)
 {
-    char before[] = "-2+1";
-    char after[] = "(0-2)+1";
+    char before[64] = "-2+1";
+    char after[64] = "(0-2.000000)+1";
 
     replace_minus(before);
     if (strcmp(before, after) == 0){

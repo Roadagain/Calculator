@@ -6,7 +6,8 @@ SRC = $(wildcard ./*.c)
 OBJ = $(patsubst %.c, %.o, $(SRC))
 DEP = $(patsubst %.c, %.d, $(SRC))
 EXE = calc
-TESTCFLAGS = -O3 -Wall -Wextra -MMD -MP
+EXECFLAGS = -o $(EXE) -lm
+TESTCFLAGS = -O3 -Wall -Wextra -MMD -MP -lm
 TESTINPUTSRC = $(wildcard test/input/*.c)
 TESTCALCSRC = $(wildcard test/calc/*.c)
 TESTSRC = $(wildcard test/**/*.c)
@@ -22,7 +23,7 @@ TESTDEP = $(patsubst %.c, %.d, $(TESTSRC))
 all: $(EXE)
 
 $(EXE): $(OBJ)
-	$(CC) -o $(EXE) $(OBJ)
+	$(CC) $(OBJ) $(EXECFLAGS)
 
 .PHONY: clean
 clean:
@@ -41,11 +42,11 @@ test-calc: $(TESTCALCEXE)
 	test/calc/test.sh $^
 
 .c.o:
-	$(CC) $(CFLAGS) $<
+	$(CC) $< $(CFLAGS)
 
 $(TESTEXE): $(TESTLIB)
 
 .c:
-	$(CC) $(TESTCFLAGS) $< $(TESTLIB) -o $@
+	$(CC) $< $(TESTLIB) -o $@ $(TESTCFLAGS)
 
 -include $(DEP)

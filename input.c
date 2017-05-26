@@ -63,7 +63,7 @@ void remove_space(char* p)
 void replace_minus(char* p)
 {
     int i, j;
-    char tmp[65536];
+    char tmp[1024];
 
     i = j = 0;
     while (p[i] != '\0'){

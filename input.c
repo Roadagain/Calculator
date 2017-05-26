@@ -72,18 +72,16 @@ void replace_minus(char* p)
             while (tmp[j] != ')'){
                 ++j;
             }
-            ++j;
 
-            ++i;
-            while (isdigit(p[i]) == 1){
+            while (isdigit(p[i + 1]) == 1){
                 ++i;
             }
         }
         else {
             tmp[j] = p[i];
-            ++i;
-            ++j;
         }
+        ++i;
+        ++j;
     }
     tmp[j] = '\0';
 

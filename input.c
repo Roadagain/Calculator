@@ -74,7 +74,7 @@ void replace_minus(char* p)
                 ++j;
             }
 
-            while (isdigit(p[i + 1]) == 1){
+            while (isdigit(p[i + 1]) != 0){
                 ++i;
             }
         }

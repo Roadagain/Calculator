@@ -1,13 +1,13 @@
 # Roadagain's calculator
 
 CC = gcc
-CFLAGS = -c -O2 -Wall -Wextra -MMD -MP
+CFLAGS = -c -O0 -Wall -Wextra -MMD -MP
 SRC = $(wildcard ./*.c)
 OBJ = $(patsubst %.c, %.o, $(SRC))
 DEP = $(patsubst %.c, %.d, $(SRC))
 EXE = calc
 EXECFLAGS = -o $(EXE) -lm
-TESTCFLAGS = -O2 -Wall -Wextra -MMD -MP -lm
+TESTCFLAGS = -O0 -Wall -Wextra -MMD -MP -lm
 TESTINPUTSRC = $(wildcard test/input/*.c)
 TESTCALCSRC = $(wildcard test/calc/*.c)
 TESTSRC = $(wildcard test/**/*.c)

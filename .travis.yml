@@ -1,6 +1,7 @@
 language: c
 compiler:
-    - gcc-7
-install: true
+    - gcc-5
+install:
+    - sudo apt-get install gcc-5-base
 script:
     - make && make test

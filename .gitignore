@@ -34,3 +34,11 @@ calc
 
 # Dependence files
 *.d
+
+# Executable Tests
+test/input/*
+!test/input/*.c
+!test/input/test.sh
+test/calc/*
+!test/calc/*.c
+!test/calc/test.sh

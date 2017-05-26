@@ -1,6 +1,4 @@
 language: c
-compiler:
-    - gcc-7.1
 install: true
 script:
     - make && make test

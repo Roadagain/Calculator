@@ -70,19 +70,19 @@ void replace_minus(char* p)
         if (p[i] == '-' && (p == 0 || (isdigit(p[i - 1]) == 0 && p[i - 1] != ')'))){
             sprintf(tmp + j, "(0-%g)", -atof(p + i));
             while (tmp[j] != ')'){
-                j++;
+                ++j;
             }
-            j++;
+            ++j;
 
-            i++;
+            ++i;
             while (isdigit(p[i]) == 1){
-                i++;
+                ++i;
             }
         }
         else {
             tmp[j] = p[i];
-            i++;
-            j++;
+            ++i;
+            ++j;
         }
     }
     tmp[j] = '\0';

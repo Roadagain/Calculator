@@ -63,26 +63,30 @@ void remove_space(char* p)
 void replace_minus(char* p)
 {
     int i, j;
-    char tmp[1024];
+    char *tmp = (char*)calloc(65536, sizeof(char));
 
     i = j = 0;
     while (p[i] != '\0'){
-        while (p[i] != '-'){
-            i++;
-        }
         if (p[i] == '-' && (p == 0 || (isdigit(p[i - 1]) == 0 && p[i - 1] != ')'))){
-            strncpy(tmp, p, i);
-            strcpy(tmp + i, "(0-");
-            sprintf(tmp + i + 3, "%g)", -atof(p + i));
+            sprintf(tmp + j, "(0-%g)", -atof(p + i));
+            while (tmp[j] != ')'){
+                j++;
+            }
+            j++;
+
             i++;
-            while (isoperator(p + i) == 0 && p[i] != '\0'){
+            while (isdigit(p[i]) == 1){
                 i++;
             }
-            strcpy(tmp + strlen(tmp), p + i);
-            strcpy(p, tmp);
         }
         else {
+            tmp[j] = p[i];
             i++;
+            j++;
         }
     }
+    tmp[j] = '\0';
+
+    strcpy(p, tmp);
+    free(tmp);
 }

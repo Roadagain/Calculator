@@ -5,7 +5,7 @@ int main(void)
 {
     // a case removable
     char before1[64] = "-2+1";
-    char after1[64] = "(0-2.000000)+1";
+    char after1[64] = "(0-2)+1";
     replace_minus(before1);
     if (strcmp(before1, after1) != 0){
         return (-1);

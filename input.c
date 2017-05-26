@@ -73,7 +73,7 @@ void replace_minus(char* p)
         if (p[i] == '-' && (p == 0 || isdigit(p[i - 1]) == 0) && p[i - 1] != ')'){
             strncpy(tmp, p, i);
             strcpy(tmp + i, "(0-");
-            sprintf(tmp + i + 3, "%f)", -atof(p + i));
+            sprintf(tmp + i + 3, "%g)", -atof(p + i));
             i++;
             while (isoperator(p + i) == 0 && p[i] != '\0'){
                 i++;

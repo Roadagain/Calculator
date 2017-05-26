@@ -23,7 +23,7 @@ TESTDEP = $(patsubst %.c, %.d, $(TESTSRC))
 all: $(EXE)
 
 $(EXE): $(OBJ)
-	$(CC) $(EXECFLAGS) $(OBJ)
+	$(CC) $(OBJ) $(EXECFLAGS)
 
 .PHONY: clean
 clean:
@@ -42,11 +42,11 @@ test-calc: $(TESTCALCEXE)
 	test/calc/test.sh $^
 
 .c.o:
-	$(CC) $(CFLAGS) $<
+	$(CC) $< $(CFLAGS)
 
 $(TESTEXE): $(TESTLIB)
 
 .c:
-	$(CC) $(TESTCFLAGS) $< $(TESTLIB) -o $@
+	$(CC) $< $(TESTLIB) -o $@ $(TESTCFLAGS)
 
 -include $(DEP)

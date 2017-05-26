@@ -67,8 +67,8 @@ void replace_minus(char* p)
 
     i = j = 0;
     while (p[i] != '\0'){
-        printf(" %s\n", p + i);
         if (p[i] == '-' && (i == 0 || (isdigit(p[i - 1]) == 0 && p[i - 1] != ')'))){
+            printf("minus %s\n", p + i);
             sprintf(tmp + j, "(0-%g)", -atof(p + i));
             while (tmp[j] != ')'){
                 ++j;
@@ -79,6 +79,7 @@ void replace_minus(char* p)
             }
         }
         else {
+            printf("%s\n", p + i);
             tmp[j] = p[i];
         }
         ++i;
